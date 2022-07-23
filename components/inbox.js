@@ -12,7 +12,7 @@ const Inbox = () => {
     const [active, setActive] = useState("user")
     return (
         <>
-            <div className="grid grid-cols-4 gap-5 mx-5">
+            <div className="grid grid-cols-4 gap-5 mx-5 overflow-auto">
 
                 {/* Left sidebar */}
                 <div className="bg-gray-50 h-screen shadow-lg rounded-xl p-5">
@@ -110,8 +110,8 @@ const Inbox = () => {
                     </div>
 
                     {/* Contact Info */}
-                    <div className="mt-8">
-                        <h3 className="text-sm font-medium text-gray-600">Contact Information</h3>
+                    <div className="mt-8 border-t border-gray-300">
+                        <h3 className="text-sm font-medium text-gray-600 mt-1">Contact Information</h3>
                         <div className="flex justify-between items-center text-gray-600 mt-3">
                             <div className="bg-slate-300 h-8 w-8 rounded-full flex justify-center items-center">
                                 <AiOutlineMail />
@@ -130,6 +130,10 @@ const Inbox = () => {
                             </div>
                             <span>User Name</span>
                         </div>
+                    </div>
+                    {/* Attachments */}
+                    <div className="border-t border-gray-300 mt-8">
+                        <h1 className="text-sm font-medium text-gray-600 mt-1">Attachments</h1>
                     </div>
                 </div>
             </div>
