@@ -1,62 +1,71 @@
 import Image from "next/image";
-import Input from "./Input";
+import Input from "../components/Input";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { GrAttachment } from "react-icons/gr";
 import { AiOutlineSend, AiOutlineUser, AiOutlineUsergroupAdd, AiFillSetting, AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
-import TextBox from "./textBox";
-import SquireButton from "./squireButton";
+import TextBox from "../components/textBox";
+import SquireButton from "../components/squireButton";
 import { useState } from "react";
 import { GoPrimitiveDot } from "react-icons/go";
+import Button from "../components/button";
+import Modal from "../components/Modal";
 
-const Inbox = () => {
-    const [active, setActive] = useState("user")
+const Inbox = ({ setmodal }) => {
+    const [active, setActive] = useState("user");
+    const [modalOpen, setModalOpen] = useState(false);
+
     return (
         <>
             <div className="grid grid-cols-4 gap-5 mx-5 overflow-auto">
-
                 {/* Left sidebar */}
-                <div className="bg-gray-50 h-screen shadow-lg rounded-xl p-5">
-                    <Input
-                        bg="bg-slate-100"
-                        placeholder="Search people or messages"
-                    />
+                <div className="bg-gray-50 h-screen shadow-lg rounded-xl p-5 flex flex-col justify-between">
+                    <div>
+                        <Input
+                            bg="bg-slate-100"
+                            placeholder="Search people or messages"
+                        />
 
-                    <div className="flex justify-between mt-5">
-                        <SquireButton
-                            active={active}
-                            setactive={setActive}
-                            title="user" />
-                        <SquireButton
-                            active={active}
-                            setactive={setActive}
-                            title="users" />
-                        <SquireButton
-                            active={active}
-                            setactive={setActive}
-                            title="setting" />
-                    </div>
+                        <div className="flex justify-between mt-5">
+                            <SquireButton
+                                active={active}
+                                setactive={setActive}
+                                title="user" />
+                            <SquireButton
+                                active={active}
+                                setactive={setActive}
+                                title="users" />
+                            <SquireButton
+                                active={active}
+                                setactive={setActive}
+                                title="setting" />
+                        </div>
 
-                    <div className="mt-8 bg-gray-100 p-3 rounded-lg">
-                        <div className="flex space-x-2">
-                            <div className="h-12 w-12 rounded-full bg-secondary">
-                                {/* <Image src={""} alt="" /> */}
-                            </div>
-                            <div className="">
-                                <div className="flex justify-between space-x-3 items-center">
-                                    <div>
-                                        <small className="text-md font-medium text-gray-600 mr-1">User Name</small>
-
-                                        <small className="p-1 rounded-full bg-red-700 text-white">12</small>
-                                    </div>
-                                    <div>
-                                        <small className="text-gray-400">9:55 pm</small>
-                                    </div>
+                        <div className="mt-8 bg-gray-100 p-3 rounded-lg">
+                            <div className="flex space-x-2 items-center">
+                                <div className="h-12 w-12 rounded-full bg-secondary">
+                                    {/* <Image src={""} alt="" /> */}
                                 </div>
-                                <div>
-                                    <small className="text-gray-400">A new message from Akash Chowdhury.</small>
+                                <div className="">
+                                    <div className="flex justify-between space-x-3 items-center">
+                                        <div>
+                                            <small className="text-md font-medium text-gray-600 mr-1">User Name</small>
+
+                                            <small className="p-1 rounded-full bg-red-700 text-white">12</small>
+                                        </div>
+                                        <div>
+                                            <small className="text-gray-400">9:55 pm</small>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <small className="text-gray-400">A new message from Akash Chowdhury.</small>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div>
+                        <Button
+                            title="Add User" />
                     </div>
                 </div>
 

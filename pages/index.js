@@ -1,16 +1,43 @@
-import Link from "next/link";
+import Auth from "./login";
+
+const Home = () => {
+    return (
+        <div>
+            <Auth />
+        </div>
+    )
+};
+
+export default Home
+
+
+
+
+
+
+
+
+
+
+
+/* import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import Auth from "../components/auth";
 import Inbox from "../components/inbox";
+import Modal from "../components/Modal";
 import Users from "../components/users";
 
 export default function Home() {
     const route = useRouter();
     const { params = [] } = route.query;
-    const [underline, setUnderline] = useState(params[0])
+    const [underline, setUnderline] = useState(params[0]);
+    const [modalOpen, setModalOpen] = useState(false);
+
+
     return (
         <div>
+            {modalOpen && <Modal setmodal={setModalOpen} />}
             <main>
                 <nav className="mb-6">
                     <ul className="w-1/3 mx-auto flex justify-center space-x-5 mt-5 text-md font-medium">
@@ -41,14 +68,14 @@ export default function Home() {
                 {
                     params.length > 0 &&
                     params[0] === 'message' &&
-                    <Inbox />
+                    <Inbox setmodal={setModalOpen} />
                 }
                 {
                     params.length > 0 &&
                     params[0] === 'users' &&
-                    <Users />
+                    <Users setmodal={setModalOpen} />
                 }
             </main>
         </div>
     )
-}
+} */

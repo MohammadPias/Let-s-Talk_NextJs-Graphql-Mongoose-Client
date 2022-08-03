@@ -1,12 +1,12 @@
-const Input = ({ type, placeholder, setvalue, value, required, bg }) => {
+const Input = ({ title, type, placeholder, setvalue, value, required, bg }) => {
     return (
         <input
-            className={`py-1.5 border text-center w-full border-gray-300 rounded-md focus:outline-gray-400 mb-3 ${bg ? bg : "bg-white"}`}
+            onChange={(e) => setvalue({ ...value, [title]: e.target.value })}
+            className={`py-1.5 border text-center w-full border-gray-300 rounded-md focus:outline-gray-300 focus:shadow-lg mb-3 ${bg ? bg : "bg-white"}`}
             type={type}
             placeholder={placeholder}
-            value={value}
-            setvalue={""}
             required={required}
+            name={title}
         />
     );
 };

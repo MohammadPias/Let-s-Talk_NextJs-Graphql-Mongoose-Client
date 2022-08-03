@@ -1,6 +1,8 @@
-const Button = ({ title, type }) => {
+const Button = ({ title, type, handleClick }) => {
     return (
-        <button className='btn btn-primary  w-full focus:outline-primary' type={type}>
+        <button
+            onClick={handleClick}
+            className='btn btn-primary  w-full focus:outline-primary' type={type}>
             {title}
         </button>
     );
