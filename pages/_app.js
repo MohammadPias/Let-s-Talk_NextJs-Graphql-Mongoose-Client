@@ -1,44 +1,25 @@
 import { ApolloProvider } from '@apollo/client'
-import { createUploadLink } from 'apollo-upload-client';
-import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
 import '../styles/globals.css'
 import Layout from '../components/Layout';
-
-const link = createUploadLink({ uri: process.env.BASE_URL })
-const authLink = setContext((_, { headers }) => {
-  // const token = localStorage.getItem('token');
-  // console.log(token)
-
-  return {
-    headers: {
-      ...headers,
-      // authorization: token ? `Bearer ${token}` : "",
-      'apollo-require-preflight': true,
-    }
-  }
-});
-
-export const client = new ApolloClient({
-  link: authLink.concat(link),
-  cache: new InMemoryCache(),
+import { client } from '../graphql/client/client';
+import { AuthContextProvider } from '../context/authContext/authContext';
 
 
-  // context: {
-  //   headers: {
-  //     'apollo-require-preflight': true,
-  //     'Authorization': `Bearer ${token}`,
-  //   },
-  // },
-})
 
 
 function MyApp({ Component, pageProps }) {
-  return <ApolloProvider client={client}>
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
-  </ApolloProvider>
+  // const [modalOpen, setModalOpen] = useState(false);
+  return (
+    <>
+      <ApolloProvider client={client}>
+        <AuthContextProvider>
+          <Layout hello="hello">
+            <Component {...pageProps} />
+          </Layout>
+        </AuthContextProvider>
+      </ApolloProvider>
+    </>
+  )
 }
 
 export default MyApp

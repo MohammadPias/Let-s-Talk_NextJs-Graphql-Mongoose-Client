@@ -3,8 +3,10 @@ const CheckBox = ({
     setvalue,
     title,
     check,
-    setcheck }
+    setcheck,
+    required }
 ) => {
+    // console.log(required)
     return (
         <div className='flex space-x-3 items-center mb-3'>
             <input
@@ -15,7 +17,8 @@ const CheckBox = ({
                 checked={value.role === title && true}
                 type="checkbox"
                 name={title}
-                id={title} />
+                id={title}
+                required={required} />
             <label htmlFor={title}>{title}</label>
         </div>
     )

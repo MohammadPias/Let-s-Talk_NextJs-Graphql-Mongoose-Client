@@ -1,4 +1,5 @@
 const Input = ({ title, type, placeholder, setvalue, value, required, bg }) => {
+    // console.log(required)
     return (
         <input
             onChange={(e) => setvalue({ ...value, [title]: e.target.value })}

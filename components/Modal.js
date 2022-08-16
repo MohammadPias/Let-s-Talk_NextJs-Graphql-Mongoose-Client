@@ -21,7 +21,7 @@ const Modal = ({ setmodal }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         createUser({ variables: { user: formData } })
-        console.log(data, loading, error)
+        console.log(error)
     }
     return (
         <div className='bg-slate-100 bg-opacity-60 h-screen w-screen fixed flex justify-center items-center'>
@@ -75,14 +75,20 @@ const Modal = ({ setmodal }) => {
                             value={formData}
                             setvalue={setFormData}
                             check={check}
-                            setcheck={setCheck} />
+                            setcheck={setCheck}
+                            required={true} />
 
                         <CheckBox
                             title="admin"
                             value={formData}
                             setvalue={setFormData}
                             check={check}
-                            setcheck={setCheck} />
+                            setcheck={setCheck}
+                            required={true} />
+                        {
+                            error &&
+                            <div className='bg-primary-light h-10 mb-5 rounded-lg flex justify-center items-center text-red-500 p-3'>{error}</div>
+                        }
                         <Button handleClick={handleSubmit} type='submit' title="Create User" />
                     </form>
                 </div>
